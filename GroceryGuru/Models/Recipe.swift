@@ -7,14 +7,13 @@
 
 import Foundation
 
-struct Recipe: Hashable{
-    let name: String
-    let url: String
-    let author: String
-    let ingredients: [String]
-    let description: String
-    let method: [String]
+struct Recipe: Hashable,Codable {
+    var Name: String?
+    let url: String?
+    let Description: String?
+    let Author: String?
+    let Ingredients: [String]?
+    let Method: [String]?
 }
-
 
 

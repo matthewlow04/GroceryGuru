@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0140D382AF9CDE80061F60F /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0140D372AF9CDE80061F60F /* Round.swift */; };
 		A0ADF52F2AF6EC1200EE64B1 /* SortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ADF52E2AF6EC1200EE64B1 /* SortOption.swift */; };
 		A0ADF5312AF703E300EE64B1 /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ADF5302AF703E300EE64B1 /* RecipeCell.swift */; };
+		A0ADF5332AF70F3A00EE64B1 /* recipes.json in Resources */ = {isa = PBXBuildFile; fileRef = A0ADF5322AF70F3A00EE64B1 /* recipes.json */; };
+		A0ADF5372AF7190200EE64B1 /* RecipeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ADF5362AF7190200EE64B1 /* RecipeData.swift */; };
+		A0ADF5392AF8939900EE64B1 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ADF5382AF8939900EE64B1 /* LocationManager.swift */; };
+		A0ADF53B2AF899EF00EE64B1 /* NearbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ADF53A2AF899EF00EE64B1 /* NearbyView.swift */; };
+		A0ADF53D2AF89B0500EE64B1 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ADF53C2AF89B0500EE64B1 /* Location.swift */; };
 		A0B977812ACC63940042E1DA /* GroceryGuruApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B977802ACC63940042E1DA /* GroceryGuruApp.swift */; };
 		A0B977832ACC63940042E1DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B977822ACC63940042E1DA /* ContentView.swift */; };
 		A0B977852ACC63960042E1DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0B977842ACC63960042E1DA /* Assets.xcassets */; };
@@ -27,8 +33,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A0140D362AF9BC920061F60F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A0140D372AF9CDE80061F60F /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
 		A0ADF52E2AF6EC1200EE64B1 /* SortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOption.swift; sourceTree = "<group>"; };
 		A0ADF5302AF703E300EE64B1 /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
+		A0ADF5322AF70F3A00EE64B1 /* recipes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recipes.json; sourceTree = "<group>"; };
+		A0ADF5362AF7190200EE64B1 /* RecipeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeData.swift; sourceTree = "<group>"; };
+		A0ADF5382AF8939900EE64B1 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		A0ADF53A2AF899EF00EE64B1 /* NearbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyView.swift; sourceTree = "<group>"; };
+		A0ADF53C2AF89B0500EE64B1 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		A0B9777D2ACC63940042E1DA /* GroceryGuru.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryGuru.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0B977802ACC63940042E1DA /* GroceryGuruApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryGuruApp.swift; sourceTree = "<group>"; };
 		A0B977822ACC63940042E1DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -77,12 +90,14 @@
 		A0B9777F2ACC63940042E1DA /* GroceryGuru */ = {
 			isa = PBXGroup;
 			children = (
+				A0140D362AF9BC920061F60F /* Info.plist */,
 				A0B977802ACC63940042E1DA /* GroceryGuruApp.swift */,
 				A0D40DEA2ACE1CAC002CE22C /* Models */,
 				A0D40DE92ACE1CA2002CE22C /* ViewModels */,
 				A0D40DE72ACE1C8E002CE22C /* Views */,
 				A0CB88702ACED9C10096C6EC /* Tools */,
 				A0B977842ACC63960042E1DA /* Assets.xcassets */,
+				A0ADF5322AF70F3A00EE64B1 /* recipes.json */,
 				A0B977862ACC63960042E1DA /* Preview Content */,
 			);
 			path = GroceryGuru;
@@ -101,6 +116,7 @@
 			children = (
 				A0CB886E2ACED9BB0096C6EC /* Modifiers.swift */,
 				A0CB88712ACEE2210096C6EC /* Colors.swift */,
+				A0140D372AF9CDE80061F60F /* Round.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -114,6 +130,7 @@
 				A0B977962ACDDAD30042E1DA /* ListView.swift */,
 				A0B977982ACDDADA0042E1DA /* FridgeView.swift */,
 				A0CDFFC82AD02B3500B84849 /* FridgeCellView.swift */,
+				A0ADF53A2AF899EF00EE64B1 /* NearbyView.swift */,
 				A0B9779A2ACDDAE20042E1DA /* RecipeView.swift */,
 				A0ADF5302AF703E300EE64B1 /* RecipeCell.swift */,
 			);
@@ -134,6 +151,9 @@
 				A0D40DED2ACE1D36002CE22C /* Recipe.swift */,
 				A0CDFFCA2AD02B7500B84849 /* FridgeFood.swift */,
 				A0ADF52E2AF6EC1200EE64B1 /* SortOption.swift */,
+				A0ADF5362AF7190200EE64B1 /* RecipeData.swift */,
+				A0ADF5382AF8939900EE64B1 /* LocationManager.swift */,
+				A0ADF53C2AF89B0500EE64B1 /* Location.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -197,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0B977882ACC63960042E1DA /* Preview Assets.xcassets in Resources */,
+				A0ADF5332AF70F3A00EE64B1 /* recipes.json in Resources */,
 				A0B977852ACC63960042E1DA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,19 +230,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0ADF5312AF703E300EE64B1 /* RecipeCell.swift in Sources */,
+				A0ADF5392AF8939900EE64B1 /* LocationManager.swift in Sources */,
 				A0ADF52F2AF6EC1200EE64B1 /* SortOption.swift in Sources */,
 				A0D40DF02ACE1E83002CE22C /* ShoppingListView.swift in Sources */,
 				A0CB88722ACEE2210096C6EC /* Colors.swift in Sources */,
 				A0CDFFCB2AD02B7500B84849 /* FridgeFood.swift in Sources */,
 				A0D40DEC2ACE1CFD002CE22C /* ShoppingFood.swift in Sources */,
+				A0ADF53B2AF899EF00EE64B1 /* NearbyView.swift in Sources */,
 				A0CDFFC92AD02B3500B84849 /* FridgeCellView.swift in Sources */,
 				A0B9779B2ACDDAE20042E1DA /* RecipeView.swift in Sources */,
 				A0B977992ACDDADA0042E1DA /* FridgeView.swift in Sources */,
 				A0CB886F2ACED9BB0096C6EC /* Modifiers.swift in Sources */,
 				A0B977972ACDDAD30042E1DA /* ListView.swift in Sources */,
 				A0B977952ACDDAC80042E1DA /* HomeView.swift in Sources */,
+				A0ADF53D2AF89B0500EE64B1 /* Location.swift in Sources */,
 				A0B977832ACC63940042E1DA /* ContentView.swift in Sources */,
+				A0ADF5372AF7190200EE64B1 /* RecipeData.swift in Sources */,
 				A0B977812ACC63940042E1DA /* GroceryGuruApp.swift in Sources */,
+				A0140D382AF9CDE80061F60F /* Round.swift in Sources */,
 				A0D40DEE2ACE1D36002CE22C /* Recipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,6 +382,9 @@
 				DEVELOPMENT_TEAM = 2V9PJ4F97F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GroceryGuru/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Request User Location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Request User Location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -386,6 +415,9 @@
 				DEVELOPMENT_TEAM = 2V9PJ4F97F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GroceryGuru/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Request User Location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Request User Location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var locationManager: LocationManager
     var body: some View {
-        VStack(){
-            ShoppingListView()
-                .modifier(CellModifier())
-            FridgeCellView()
-                
+        ScrollView{
+            VStack(){
+                ShoppingListView()
+                    .modifier(CellModifier())
+                FridgeCellView()
+                NearbyView()
+                    .modifier(CellModifier())
+                    
+            }
         }
+       
      
     }
 }

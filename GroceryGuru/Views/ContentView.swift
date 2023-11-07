@@ -6,8 +6,15 @@
 //
 
 import SwiftUI
+import CoreLocation
+import CoreLocationUI
+import MapKit
 
 struct ContentView: View {
+    @EnvironmentObject var recipeData: RecipeData
+    @EnvironmentObject var locationManager: LocationManager
+    @State private var clLocationManager = CLLocationManager()
+
     var body: some View {
         VStack{
             HStack(spacing: 0){
@@ -30,11 +37,20 @@ struct ContentView: View {
                 RecipeView()
                     .tabItem{Label("Recipes", systemImage: "fork.knife")}
             }
+            
+            
         }
         .font(Font.system(size: 15, weight: .semibold, design:.rounded))
+        .onAppear{
+           
+            recipeData.loadRecipesFromJSONFile(named: "recipes")
+//            CLLocationManager().requestWhenInUseAuthorization()
+           
+        }
         
     }
     
+   
 }
 
 
