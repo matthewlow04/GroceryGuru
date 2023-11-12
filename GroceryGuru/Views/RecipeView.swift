@@ -11,6 +11,7 @@ import SwiftUI
 
 struct RecipeView: View {
     @EnvironmentObject var recipeData: RecipeData
+    @StateObject var fridge: FridgeData
 
     var body: some View {
         VStack{
@@ -35,7 +36,7 @@ struct RecipeView: View {
                     VStack{
                         Text("Personalized Recipe Ideas")
                             .font(.headline)
-                        Text("Recipes that use 'Mushrooms'")
+                        Text("Recipes that use " + fridge.nextToExpire().name)
                             .font(.subheadline)
                             .opacity(0.8)
                     }
@@ -43,12 +44,11 @@ struct RecipeView: View {
                     Text("View All")
                     Image(systemName: "play")
                 }
-                let recipesWithTomato = recipeData.recipes.filter { recipe in
-                    return recipe.Ingredients?.contains(where: { ingredient in
-                        return ingredient.lowercased().contains("tomato")
-                    }) ?? false
+                let expiryIngredient = recipeData.recipes.filter { recipe in
+                    (recipe.Ingredients?.joined(separator: " ") ?? "").lowercased().contains(fridge.nextToExpire().name.lowercased())
                 }
-                if !recipesWithTomato.isEmpty {
+
+                if expiryIngredient.isEmpty {
                     Text("No Suggestions")
                         .padding(.top, 20)
                         .italic()
@@ -59,10 +59,11 @@ struct RecipeView: View {
                 } else {
                     ScrollView(.horizontal){
                         HStack {
-                            ForEach(recipesWithTomato, id: \.self) { recipe in
+                            ForEach(expiryIngredient, id: \.self) { recipe in
                                 RecipeCell(recipe: recipe)
                                     .padding()
                             }
+                           
                         }
                     }
                 }
@@ -76,7 +77,7 @@ struct RecipeView: View {
                     Text("View All")
                     Image(systemName: "play")
                 }
-                if(recipeData.favorites.isEmpty){
+                if(recipeData.favorites.filter{$0.Favourite == true}.isEmpty){
                     
                     Text("No Favourites")
                         .padding(.top, 20)
@@ -89,7 +90,7 @@ struct RecipeView: View {
                 else{
                     ScrollView(.horizontal){
                         HStack {
-                            ForEach(recipeData.favorites, id: \.self) { recipe in
+                            ForEach(recipeData.favorites.filter{$0.Favourite == true}, id: \.self) { recipe in
                                 RecipeCell(recipe: recipe)
                                     .padding()
                             }

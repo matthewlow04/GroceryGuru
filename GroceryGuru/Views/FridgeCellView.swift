@@ -6,32 +6,62 @@
 //
 
 import SwiftUI
+import Sliders
 
 struct FridgeCellView: View {
-    @State var fridgeItems = [FridgeFood(name: "Mushroom", expiration: Date.now, category: FridgeFood.Category.dairy)]
+    @StateObject var fridge: FridgeData
+    var isHomeScreen: Bool
+
+
+  
     var body: some View {
         HStack{
             VStack(alignment: .leading, spacing: 10) {
                 Text("My Fridge")
                     .modifier(TitleModifier())
-                ForEach($fridgeItems, id: \.self) { $food in
-                    VStack (alignment: .leading) {
-                        Text(food.name)
-                        Text("Expires Today")
-                            .foregroundColor(CustomColor.expiryBlue)
+                ForEach($fridge.fridgeItems, id: \.self) { $food in
+                    ZStack{
+                        if(!isHomeScreen){
+                            ValueSlider(value: $food.amount,in: 0...1, step: 0.05)
+                                .valueSliderStyle(
+                                    HorizontalValueSliderStyle(
+                                                track:
+                                                    HorizontalValueTrack(
+                                                        view: RoundedRectangle(cornerRadius: 10).foregroundColor(fridge.getExpiryColor(date: food.expiration).opacity(0.5)),
+                                                        mask: RoundedRectangle(cornerRadius: 10).foregroundColor(fridge.getExpiryColor(date: food.expiration).opacity(0.5))
+                                                    )
+                                                    .background(RoundedRectangle(cornerRadius: 10).foregroundColor(Color.white))
+                                                    .frame(height: 50),
+                                                thumbSize: CGSizeMake(1, 1),
+                                                options: .interactiveTrack
+                                    )
+                                )
+                        }
+                        HStack{
+                            VStack (alignment: .leading) {
+                                Text(food.name)
+                                Text("Expires: " + expiresMessage(date: food.expiration))
+                                    .foregroundColor(fridge.getExpiryColor(date: food.expiration))
+                                    .font(Font.system(size: 13, weight: .semibold))
+                            }
+                            Spacer()
+                        }
+                        .padding(.horizontal, isHomeScreen ? 0 : 10)
+                    
+                        
+                        
                     }
+                    .frame(height: isHomeScreen ? 35 : 50)
+                   
                 }
             }
-            Spacer()
         }
         .padding(20)
         .modifier(CellModifier())
+        
        
     }
 }
 
-struct FridgeCellView_Previews: PreviewProvider {
-    static var previews: some View {
-        FridgeCellView()
-    }
-}
+
+

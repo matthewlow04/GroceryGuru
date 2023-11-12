@@ -28,14 +28,31 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func fetchLocation() async throws -> LocationResponse {
-        
-        let url = URL(string: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(location.latitude ?? 43.894660 ),\(location.longitude ?? -79.374350)&radius=5000&keyword=grocery&key=AIzaSyDxcng7Fba-UVGoes36l260nOJStPZwIGY")!
+        if let path = Bundle.main.path(forResource: "Keys", ofType: "plist"),
+           let data = FileManager.default.contents(atPath: path) {
+            do {
+                if let plist = try PropertyListSerialization.propertyList(from: data, options: [], format: nil) as? [String: Any] {
+                    if let apiKey = plist["api-key"] as? String {
+                        let url = URL(string: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(location.latitude ),\(location.longitude )&radius=5000&keyword=grocery&key=\(apiKey)")!
 
-        let (data, _) = try await URLSession.shared.data(from: url)
+                        let (data, _) = try await URLSession.shared.data(from: url)
 
-        let decoded = try JSONDecoder().decode(LocationResponse.self, from: data)
+                        let decoded = try JSONDecoder().decode(LocationResponse.self, from: data)
 
-        return decoded
+                        return decoded
+                    } else {
+                        print("API Key not found in plist")
+                    }
+                }
+            } catch {
+                print("Error reading plist: \(error)")
+            }
+        } else {
+            print("Error accessing plist file")
+        }
+       
+        throw fatalError()
+     
     }
     
         

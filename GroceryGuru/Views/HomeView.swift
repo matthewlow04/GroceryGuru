@@ -9,12 +9,18 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var locationManager: LocationManager
+    @StateObject var fridge: FridgeData
     var body: some View {
         ScrollView{
-            VStack(){
+            VStack(spacing: -20){
                 ShoppingListView()
                     .modifier(CellModifier())
-                FridgeCellView()
+                ZStack{
+                    FridgeCellView(fridge: fridge, isHomeScreen: true)
+                    RecipeSuggestionCell(fridge: fridge, isHomeView: true)
+                        .offset(x: 75, y: -50)
+                }
+                
                 NearbyView()
                     .modifier(CellModifier())
                     
@@ -25,8 +31,3 @@ struct HomeView: View {
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
-    }
-}

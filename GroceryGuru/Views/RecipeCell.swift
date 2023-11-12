@@ -10,34 +10,28 @@ import SwiftUI
 struct RecipeCell: View {
     @EnvironmentObject var recipeData: RecipeData
     @State var recipe: Recipe
-    @State var isFavorite = false
+    
     var body: some View {
         HStack{
             VStack(alignment: .leading, spacing: 4) {
                 Text(recipe.Name?.capitalized ?? "No Name")
                     .lineLimit(3)
+                    .onTapGesture {
+                        print(recipe.Ingredients!)
+                    }
             }
             .frame(width: 100)
 
-            Image(systemName: isFavorite ? "bookmark.fill" : "bookmark")
+            Image(systemName: recipe.Favourite ? "bookmark.fill" : "bookmark")
                 .onTapGesture {
-                    isFavorite.toggle()
-                    toggleFavorite()
+                    recipe.Favourite.toggle()
+                    recipeData.toggleFavourite(for: recipe)
                 }
                
         }
     }
-    
-    func toggleFavorite() {
-        
-        if isFavorite {
-            recipeData.favorites.append(recipe)
-        } else {
-            recipeData.favorites.removeAll { $0 == recipe }
-        }
-        
-        print(recipeData.favorites)
-    }
+
+
 }
 
 

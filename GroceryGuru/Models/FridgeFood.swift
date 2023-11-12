@@ -12,6 +12,7 @@ struct FridgeFood: Hashable {
     var name: String
     var expiration: Date
     var category: Category
+    var amount: Double
     enum Category: String, CaseIterable, Codable{
         case dairy = "dairy"
         case meat = "meat"

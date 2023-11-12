@@ -7,17 +7,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6D0ABF40-57A5-418A-9BBF-F1CA6FE942B9"
-            shouldBeEnabled = "Yes"
+            uuid = "D87C059B-C054-425F-B6AB-D58B77D98D07"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GroceryGuru/Models/ShoppingFood.swift"
+            filePath = "GroceryGuru/Views/FridgeView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
-            landmarkName = "ShoppingFood"
-            landmarkType = "14">
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "body"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

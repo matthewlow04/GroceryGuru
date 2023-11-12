@@ -14,7 +14,7 @@ struct NearbyView: View {
     @EnvironmentObject var locationManager: LocationManager
     var body: some View {
         HStack {
-            VStack(alignment: .leading, spacing: 10) {
+            VStack(alignment: .leading, spacing: 5) {
                 Text("Local Grocery Stores")
                     .modifier(TitleModifier())
                 if let response = locationResponse {
@@ -25,8 +25,9 @@ struct NearbyView: View {
                         Text("Rating: \(String(format: "%.2f", response.results[0].rating!.rounded(toDecimalPlaces: 2)))")
                         
                     }
-                        .font(.subheadline)
-                        .opacity(0.8)
+                    
+                    .font(Font.system(size: 13, weight: .semibold, design:.rounded))
+                    .opacity(0.5)
                     
                   
               
@@ -36,8 +37,9 @@ struct NearbyView: View {
                         Text("Distance: \(calculateDistanceBetween(coordinate1: CLLocationCoordinate2D(latitude: locationManager.location.latitude, longitude: locationManager.location.longitude), coordinate2: CLLocationCoordinate2D(latitude: response.results[1].geometry!.location.lat!, longitude: response.results[1].geometry!.location.lng!)))")
                         Text("Rating: \(String(format: "%.2f", response.results[1].rating!.rounded(toDecimalPlaces: 2)))")
                     }
-                        .font(.subheadline)
-                        .opacity(0.8)
+                    .font(Font.system(size: 13, weight: .semibold, design:.rounded))
+                    .opacity(0.5)
+                    
        
                 } else {
                     Text("Loading...")

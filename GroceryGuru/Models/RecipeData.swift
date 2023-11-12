@@ -29,4 +29,16 @@ class RecipeData: ObservableObject{
         
         return recipes
     }
+    
+    func toggleFavourite(for recipe: Recipe) {
+            if recipe.Favourite {
+                if !favorites.contains(recipe) {
+                    favorites.append(recipe)
+                }
+            } else {
+                favorites.removeAll { $0 == recipe }
+            }
+        
+        objectWillChange.send()
+    }
 }

@@ -8,31 +8,37 @@
 import SwiftUI
 
 struct FridgeView: View {
-    var sortOptions: [SortOption] = [SortOption(name: "Expiry (default)", selected: true), SortOption(name: "Category", selected: false)]
     
+    @StateObject var fridge: FridgeData
     var body: some View {
         VStack(alignment: .leading){
+            RecipeSuggestionCell(fridge: fridge, isHomeView: false)
             VStack(alignment: .leading){
                 Text("Sort by:")
                 HStack(){
-                    ForEach(sortOptions, id: \.self){ option in
-                        Text("\(option.name)")
-                            .padding(7)
-                            .overlay(Capsule(style: .continuous).stroke(option.selected ? Color.accentColor : Color.gray, lineWidth: 2))
-                        
+                    ForEach(fridge.sortOptions, id: \.self){ option in
+                        Button {
+                            fridge.sortFridge(option.name)
+                        } label: {
+                            Text("\(option.name)")
+                                .foregroundStyle(option.selected ? Color.accentColor : Color.black)
+                                .padding(7)
+                                .overlay(Capsule(style: .continuous).stroke(option.selected ? Color.accentColor : Color.gray, lineWidth: 2))
+                        }
+          
                     }
                 }
             }
             .padding(.horizontal, 20)
-            FridgeCellView()
+            FridgeCellView(fridge: fridge, isHomeScreen: false)
             Spacer()
         }
         
+        
+       
     }
-} 
-
-struct FridgeView_Previews: PreviewProvider {
-    static var previews: some View {
-        FridgeView()
-    }
+    
+   
 }
+
+

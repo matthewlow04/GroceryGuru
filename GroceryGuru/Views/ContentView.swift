@@ -13,6 +13,7 @@ import MapKit
 struct ContentView: View {
     @EnvironmentObject var recipeData: RecipeData
     @EnvironmentObject var locationManager: LocationManager
+    @StateObject var fridgeData = FridgeData()
     @State private var clLocationManager = CLLocationManager()
 
     var body: some View {
@@ -28,13 +29,13 @@ struct ContentView: View {
             
             Divider()
             TabView{
-                HomeView()
+                HomeView(fridge: fridgeData)
                     .tabItem{Label("Home", systemImage: "house")}
                 ListView()
                     .tabItem{Label("List", systemImage: "checklist")}
-                FridgeView()
+                FridgeView(fridge: fridgeData)
                     .tabItem{Label("Fridge", systemImage: "refrigerator")}
-                RecipeView()
+                RecipeView(fridge: fridgeData)
                     .tabItem{Label("Recipes", systemImage: "fork.knife")}
             }
             
@@ -43,9 +44,9 @@ struct ContentView: View {
         .font(Font.system(size: 15, weight: .semibold, design:.rounded))
         .onAppear{
            
-            recipeData.loadRecipesFromJSONFile(named: "recipes")
+            recipeData.loadRecipesFromJSONFile(named: "christmasrecipes")
 //            CLLocationManager().requestWhenInUseAuthorization()
-           
+            fridgeData.sortDefault()
         }
         
     }
