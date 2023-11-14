@@ -14,6 +14,7 @@ struct ContentView: View {
     @EnvironmentObject var recipeData: RecipeData
     @EnvironmentObject var locationManager: LocationManager
     @StateObject var fridgeData = FridgeData()
+    @StateObject var shoppingList = ShoppingListData()
     @State private var clLocationManager = CLLocationManager()
 
     var body: some View {
@@ -29,9 +30,9 @@ struct ContentView: View {
             
             Divider()
             TabView{
-                HomeView(fridge: fridgeData)
+                HomeView(fridge: fridgeData, shoppingList: shoppingList)
                     .tabItem{Label("Home", systemImage: "house")}
-                ListView()
+                ListView(shoppingList: shoppingList)
                     .tabItem{Label("List", systemImage: "checklist")}
                 FridgeView(fridge: fridgeData)
                     .tabItem{Label("Fridge", systemImage: "refrigerator")}
@@ -56,8 +57,4 @@ struct ContentView: View {
 
 
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+

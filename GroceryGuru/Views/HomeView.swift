@@ -10,10 +10,11 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var locationManager: LocationManager
     @StateObject var fridge: FridgeData
+    @StateObject var shoppingList: ShoppingListData
     var body: some View {
         ScrollView{
             VStack(spacing: -20){
-                ShoppingListView()
+                ShoppingListView(shoppingList: shoppingList)
                     .modifier(CellModifier())
                 ZStack{
                     FridgeCellView(fridge: fridge, isHomeScreen: true)

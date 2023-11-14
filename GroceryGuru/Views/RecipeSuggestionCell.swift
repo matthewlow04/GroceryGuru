@@ -49,7 +49,7 @@ struct RecipeSuggestionCell: View {
         }
         
         .padding(20)
-        .frame(width: isHomeView ? 180 : 0, height: isHomeView ? 75 : 0)
+        .frame(width: isHomeView ? 180 : nil, height: isHomeView ? 75 : nil)
         .background(Color.accentColor.opacity(0.30))
         .cornerRadius(20)
         .padding(20)

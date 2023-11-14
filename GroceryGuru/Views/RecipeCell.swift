@@ -12,23 +12,38 @@ struct RecipeCell: View {
     @State var recipe: Recipe
     
     var body: some View {
-        HStack{
-            VStack(alignment: .leading, spacing: 4) {
-                Text(recipe.Name?.capitalized ?? "No Name")
-                    .lineLimit(3)
-                    .onTapGesture {
-                        print(recipe.Ingredients!)
-                    }
+        VStack{
+            AsyncImage(url: URL(string: recipe.imageUrl!)) { image in
+                image
+                    .resizable()
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+            } placeholder: {
+                ProgressView()
             }
-            .frame(width: 100)
+            .frame(width: 150, height: 100)
+     
 
-            Image(systemName: recipe.Favourite ? "bookmark.fill" : "bookmark")
-                .onTapGesture {
-                    recipe.Favourite.toggle()
-                    recipeData.toggleFavourite(for: recipe)
+            HStack{
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(recipe.Name?.capitalized ?? "No Name")
+                        .lineLimit(3)
+                        .padding(.horizontal, 2)
                 }
-               
+                Spacer()
+
+                Image(systemName: recipe.Favourite ? "bookmark.fill" : "bookmark")
+                    .onTapGesture {
+                        recipe.Favourite.toggle()
+                        recipeData.toggleFavourite(for: recipe)
+                    }
+                    .padding(.horizontal, 2)
+                   
+            }
+            .frame(width: 125, height: 75)
+            
         }
+        .background(RoundedRectangle(cornerRadius: 10).foregroundStyle(Color.gray.opacity(0.2)))
+       
     }
 
 

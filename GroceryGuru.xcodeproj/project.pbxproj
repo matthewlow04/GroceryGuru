@@ -13,6 +13,7 @@
 		A08F97A12B0162450026416C /* christmasrecipes.json in Resources */ = {isa = PBXBuildFile; fileRef = A08F97A02B0162450026416C /* christmasrecipes.json */; };
 		A08F97A32B01711C0026416C /* RecipeSuggestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08F97A22B01711C0026416C /* RecipeSuggestionCell.swift */; };
 		A08F97A52B01880F0026416C /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = A08F97A42B01880F0026416C /* Keys.plist */; };
+		A08F97A72B01BC2A0026416C /* ShoppingListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08F97A62B01BC2A0026416C /* ShoppingListData.swift */; };
 		A0ADF52F2AF6EC1200EE64B1 /* SortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ADF52E2AF6EC1200EE64B1 /* SortOption.swift */; };
 		A0ADF5312AF703E300EE64B1 /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ADF5302AF703E300EE64B1 /* RecipeCell.swift */; };
 		A0ADF5332AF70F3A00EE64B1 /* recipes.json in Resources */ = {isa = PBXBuildFile; fileRef = A0ADF5322AF70F3A00EE64B1 /* recipes.json */; };
@@ -45,6 +46,7 @@
 		A08F97A02B0162450026416C /* christmasrecipes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = christmasrecipes.json; sourceTree = "<group>"; };
 		A08F97A22B01711C0026416C /* RecipeSuggestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSuggestionCell.swift; sourceTree = "<group>"; };
 		A08F97A42B01880F0026416C /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		A08F97A62B01BC2A0026416C /* ShoppingListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListData.swift; sourceTree = "<group>"; };
 		A0ADF52E2AF6EC1200EE64B1 /* SortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOption.swift; sourceTree = "<group>"; };
 		A0ADF5302AF703E300EE64B1 /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
 		A0ADF5322AF70F3A00EE64B1 /* recipes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recipes.json; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				A0CDFFCA2AD02B7500B84849 /* FridgeFood.swift */,
 				A0ADF52E2AF6EC1200EE64B1 /* SortOption.swift */,
 				A0ADF5362AF7190200EE64B1 /* RecipeData.swift */,
+				A08F97A62B01BC2A0026416C /* ShoppingListData.swift */,
 				A0E3D8DF2AFC50D500019A73 /* FridgeData.swift */,
 				A0ADF5382AF8939900EE64B1 /* LocationManager.swift */,
 				A0ADF53C2AF89B0500EE64B1 /* Location.swift */,
@@ -269,6 +272,7 @@
 				A0B977992ACDDADA0042E1DA /* FridgeView.swift in Sources */,
 				A0E3D8E02AFC50D500019A73 /* FridgeData.swift in Sources */,
 				A0CB886F2ACED9BB0096C6EC /* Modifiers.swift in Sources */,
+				A08F97A72B01BC2A0026416C /* ShoppingListData.swift in Sources */,
 				A0B977972ACDDAD30042E1DA /* ListView.swift in Sources */,
 				A0B977952ACDDAC80042E1DA /* HomeView.swift in Sources */,
 				A0ADF53D2AF89B0500EE64B1 /* Location.swift in Sources */,

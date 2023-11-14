@@ -7,9 +7,10 @@
 
 import SwiftUI
 struct ShoppingListView: View {
-    @State var foodItems = [ShoppingFood(name: "Apple", selected: true), ShoppingFood(name: "Orange", selected: false)]
+    
     @State var addingItem = false
     @State var itemName = ""
+    @StateObject var shoppingList: ShoppingListData
 
     var body: some View {
         HStack {
@@ -17,7 +18,7 @@ struct ShoppingListView: View {
                 Text("My Shopping List")
                     .modifier(TitleModifier())
                 
-                ForEach($foodItems, id: \.self) { $food in
+                ForEach($shoppingList.foodItems, id: \.self) { $food in
                     HStack {
                         CheckBox(foodItem: $food)
                         Text(food.name)
@@ -46,7 +47,7 @@ struct ShoppingListView: View {
                         Spacer()
                         Button("Add") {
                             if !itemName.isEmpty {
-                                foodItems.append(ShoppingFood(name: itemName, selected: false))
+                                shoppingList.foodItems.append(ShoppingFood(name: itemName, selected: false))
                                 itemName = ""
                                 addingItem.toggle()
                             }
@@ -80,8 +81,4 @@ struct CheckBox: View{
 }
 
 
-struct ShoppingListView_Previews: PreviewProvider {
-    static var previews: some View {
-        ShoppingListView()
-    }
-}
+

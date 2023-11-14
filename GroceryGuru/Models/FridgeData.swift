@@ -11,7 +11,7 @@ import SwiftUI
 class FridgeData: ObservableObject{
     @Published var fridgeItems = [
         FridgeFood(name: "Tomato", expiration: Date.now, category: .veg, amount: 0.5),
-        FridgeFood(name: "Apple", expiration: setDate(month: 09, day: 21, year: 2023), category: .fruit, amount: 0.3),
+        FridgeFood(name: "Apple", expiration: setDate(month: 09, day: 21, year: 2024), category: .fruit, amount: 0.3),
         FridgeFood(name: "Pork", expiration: setDate(month: 10, day: 08, year: 2024), category: .meat, amount: 0.2)
     ]
     

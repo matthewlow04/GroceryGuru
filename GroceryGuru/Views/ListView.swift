@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct ListView: View {
+    @StateObject var shoppingList: ShoppingListData
     var body: some View {
         VStack{
-            ShoppingListView()
+            ShoppingListView(shoppingList: shoppingList)
                 .modifier(CellModifier())
             Spacer()
         }
@@ -18,9 +19,5 @@ struct ListView: View {
     }
 }
 
-struct ListView_Previews: PreviewProvider {
-    static var previews: some View {
-        ListView()
-    }
-}
+
 
