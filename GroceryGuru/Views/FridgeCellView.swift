@@ -10,15 +10,28 @@ import Sliders
 
 struct FridgeCellView: View {
     @StateObject var fridge: FridgeData
+    @State var showingPopover = false
     var isHomeScreen: Bool
 
-
-  
     var body: some View {
         HStack{
             VStack(alignment: .leading, spacing: 10) {
-                Text("My Fridge")
-                    .modifier(TitleModifier())
+                HStack{
+                    Text("My Fridge")
+                        .modifier(TitleModifier())
+                    Spacer()
+                    if(!isHomeScreen){
+                        Button(action: {
+                            showingPopover = true
+                        }, label: {
+                            Image(systemName: "plus")
+                        })
+                    }
+                }
+                .popover(isPresented: $showingPopover, content: {
+                    AddFoodView(fridge: fridge)
+                })
+              
                 ForEach($fridge.fridgeItems, id: \.self) { $food in
                     ZStack{
                         if(!isHomeScreen){
