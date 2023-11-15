@@ -10,6 +10,7 @@ import SwiftUI
 struct RecipeCell: View {
     @EnvironmentObject var recipeData: RecipeData
     @State var recipe: Recipe
+    @State var showingPopover = false
     
     var body: some View {
         VStack{
@@ -43,6 +44,13 @@ struct RecipeCell: View {
             
         }
         .background(RoundedRectangle(cornerRadius: 10).foregroundStyle(Color.gray.opacity(0.2)))
+        .onTapGesture {
+            showingPopover = true
+        }
+        
+        .popover(isPresented: $showingPopover, content: {
+            RecipeDetailView(recipe: recipe)
+        })
        
     }
 
