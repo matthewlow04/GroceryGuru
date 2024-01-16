@@ -11,6 +11,8 @@ struct ShoppingListView: View {
     @State var addingItem = false
     @State var itemName = ""
     @StateObject var shoppingList: ShoppingListData
+    @State var showingPopover = false
+    @State var selectedFood: ShoppingFood?
 
     var body: some View {
         HStack {
@@ -22,7 +24,14 @@ struct ShoppingListView: View {
                     HStack {
                         CheckBox(foodItem: $food)
                         Text(food.name)
+                            .onTapGesture {
+                                selectedFood = food
+                            }
+                            .onChange(of: selectedFood) { 
+                                showingPopover = true
+                            }
                     }
+                    
                 }
 
                 if !addingItem {
@@ -60,6 +69,10 @@ struct ShoppingListView: View {
                     }
                 }
             }
+            .popover(isPresented: $showingPopover, arrowEdge: Edge.top, content: {
+                FoodInfoView(food: selectedFood!)
+                    .presentationCompactAdaptation((.popover))
+            })
             Spacer()
         }
         .padding(.all, 20)

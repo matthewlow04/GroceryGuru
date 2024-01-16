@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import MapKit
 import CoreLocationUI
 import CoreLocation
 
 struct NearbyView: View {
     @State private var locationResponse: LocationResponse?
     @EnvironmentObject var locationManager: LocationManager
+    @State var showingPopover = false
+    @State var currentIndex = 0
+    @State var currentLocation = ""
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 5) {
@@ -23,6 +27,12 @@ struct NearbyView: View {
                         Text("\(response.results[0].vicinity!)")
                         Text("Distance: \(calculateDistanceBetween(coordinate1: CLLocationCoordinate2D(latitude: locationManager.location.latitude, longitude: locationManager.location.longitude), coordinate2: CLLocationCoordinate2D(latitude: response.results[0].geometry!.location.lat!, longitude: response.results[0].geometry!.location.lng!)))")
                         Text("Rating: \(String(format: "%.2f", response.results[0].rating!.rounded(toDecimalPlaces: 2)))")
+                        
+                    }
+                    .onTapGesture {
+                        currentIndex = 0
+                        currentLocation = response.results[0].name!
+                        showingPopover = true
                         
                     }
                     
@@ -37,6 +47,11 @@ struct NearbyView: View {
                         Text("Distance: \(calculateDistanceBetween(coordinate1: CLLocationCoordinate2D(latitude: locationManager.location.latitude, longitude: locationManager.location.longitude), coordinate2: CLLocationCoordinate2D(latitude: response.results[1].geometry!.location.lat!, longitude: response.results[1].geometry!.location.lng!)))")
                         Text("Rating: \(String(format: "%.2f", response.results[1].rating!.rounded(toDecimalPlaces: 2)))")
                     }
+                    .onTapGesture {
+                        currentIndex = 1
+                        currentLocation = response.results[1].name!
+                        showingPopover = true
+                    }
                     .font(Font.system(size: 13, weight: .semibold, design:.rounded))
                     .opacity(0.5)
                     
@@ -49,6 +64,16 @@ struct NearbyView: View {
             }
             Spacer()
         }
+        .popover(isPresented: $showingPopover, content: {
+            Map{
+                Marker(currentLocation, coordinate: CLLocationCoordinate2D(latitude: locationResponse!.results[currentIndex].geometry!.location.lat!, longitude: locationResponse!.results[currentIndex].geometry!.location.lng!))
+                    .tint(.orange)
+                Marker("Home", coordinate: CLLocationCoordinate2D(latitude: locationManager.location.latitude, longitude: locationManager.location.longitude))
+                    .tint(.red)
+                    
+            }.frame(width: 300, height: 300)
+            .presentationCompactAdaptation((.popover))
+        })
         .padding(.all, 20)
         .onAppear{
             Task {
